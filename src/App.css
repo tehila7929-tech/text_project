@@ -1,0 +1,78 @@
+/* ===== APP LAYOUT ===== */
+#root {
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ===== MAIN WORKSPACE ===== */
+.main-workspace {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  padding: 20px;
+  max-width: 1400px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+/* ===== DOCUMENT WRAPPER ===== */
+.document-item {
+  background: #ffffff;
+  border-radius: 8px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
+  border: 1px solid #e0e0e0;
+  transition: all 0.2s ease;
+  min-height: 400px;
+  font-family: 'Times New Roman', serif;
+}
+
+.document-item:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+}
+
+/* ===== ADD DOCUMENT BUTTON ===== */
+.add-document-container {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+.add-document-btn {
+  background: linear-gradient(45deg, #ff6b6b, #feca57);
+  border: none;
+  border-radius: 25px;
+  padding: 12px 24px;
+  font-size: 16px;
+  color: white;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-weight: 600;
+  box-shadow: 0 4px 15px rgba(255,107,107,0.3);
+}
+
+.add-document-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(255,107,107,0.4);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .main-workspace {
+    grid-template-columns: 1fr;
+    padding: 10px;
+    gap: 15px;
+  }
+  
+  .document-item {
+    min-height: 300px;
+  }
+}

@@ -1,0 +1,87 @@
+/* ===== SCREEN CONTAINER ===== */
+#screen {
+    background: #ffffff;
+    border: 1px solid #d0d7de;
+    width: 100%;
+    min-height: 280px;
+    max-width: 100%;
+    margin: 0;
+    padding: 24px 32px;
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25);
+    font-family: 'Times New Roman', 'Liberation Serif', serif;
+    font-size: 12pt;
+    line-height: 1.6;
+    color: #000000;
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+
+
+/* ===== CONTENT AREA ===== */
+#screen > div {
+    position: relative;
+    z-index: 1;
+    min-height: 100%;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+/* ===== TEXT STYLING ===== */
+#screen span {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    display: inline;
+    position: relative;
+    transition: all 0.2s ease;
+}
+
+#screen span:hover {
+    background: rgba(0,0,0,0.05);
+    border-radius: 2px;
+}
+
+#screen span:focus {
+    outline: none;
+    background: rgba(0,123,255,0.1);
+    border-radius: 2px;
+}
+
+/* ===== DIRECTION SUPPORT ===== */
+#screen span[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+}
+
+#screen span[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+}
+
+/* ===== HOVER EFFECTS ===== */
+#screen {
+    transition: all 0.3s ease;
+}
+
+#screen:hover {
+    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 1px 3px rgba(27,31,36,0.12);
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    #screen {
+        min-height: 220px;
+        font-size: 12px;
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    #screen {
+        min-height: 180px;
+        font-size: 11px;
+        padding: 12px;
+    }
+}

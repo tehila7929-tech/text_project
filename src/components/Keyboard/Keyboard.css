@@ -1,0 +1,233 @@
+/* ===== KEYBOARD CONTAINER ===== */
+.keyboard-main {
+    background: #f6f8fa;
+    border: 1px solid #d0d7de;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 20px auto;
+    max-width: 1000px;
+    box-shadow: 0 1px 3px rgba(27,31,36,0.12), 0 8px 24px rgba(66,74,83,0.12);
+}
+
+/* ===== KEYBOARD HEADER ===== */
+.keyboard-title {
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    color: white;
+    border-radius: 12px;
+    padding: 12px 20px;
+    margin: -20px -20px 20px -20px;
+    font-weight: 600;
+    font-size: 16px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(102,126,234,0.3);
+}
+
+/* ===== KEY GROUPS ===== */
+.key-section {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 16px;
+    padding: 12px;
+    background: linear-gradient(145deg, #f8f9fa, #e9ecef);
+    border-radius: 12px;
+    border: 1px solid rgba(255,255,255,0.5);
+    box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.key-section:last-child {
+    margin-bottom: 0;
+}
+
+/* ===== REGULAR KEYS ===== */
+.key-btn {
+    background: #ffffff !important;
+    border: 1px solid #d0d7de !important;
+    border-radius: 4px !important;
+    padding: 8px 12px !important;
+    margin: 2px !important;
+    cursor: pointer !important;
+    font-size: 13px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: #24292f !important;
+    transition: all 0.1s ease !important;
+    min-width: 40px !important;
+    min-height: 36px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    user-select: none !important;
+    font-weight: 400 !important;
+    box-shadow: 0 1px 0 rgba(27,31,36,0.04), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+}
+
+.key-btn:hover {
+    background: #f3f4f6 !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 1px 0 rgba(27,31,36,0.04), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+}
+
+.key-btn:active {
+    background: #ebecf0 !important;
+    border-color: #d0d7de !important;
+    box-shadow: inset 0 1px 0 rgba(27,31,36,0.15) !important;
+}
+
+/* ===== SPACE BAR ===== */
+button:contains("space"), button:contains("רווח") {
+    min-width: 300px !important;
+    flex: 1 !important;
+    max-width: 400px !important;
+}
+
+/* Special styling for space button */
+.key-section button[data-space="true"] {
+    min-width: 300px !important;
+    flex: 1 !important;
+    background: #ffffff !important;
+    border: 1px solid #d0d7de !important;
+    border-radius: 4px !important;
+    padding: 8px 12px !important;
+    margin: 2px !important;
+    cursor: pointer !important;
+    font-size: 13px !important;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    color: #24292f !important;
+    transition: all 0.1s ease !important;
+    min-height: 36px !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    user-select: none !important;
+    font-weight: 400 !important;
+    box-shadow: 0 1px 0 rgba(27,31,36,0.04), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+}
+
+.key-section button[data-space="true"]:hover {
+    background: #f3f4f6 !important;
+    border-color: #d0d7de !important;
+    box-shadow: 0 1px 0 rgba(27,31,36,0.04), inset 0 1px 0 rgba(255,255,255,0.25) !important;
+}
+
+.key-section button[data-space="true"]:active {
+    background: #ebecf0 !important;
+    border-color: #d0d7de !important;
+    box-shadow: inset 0 1px 0 rgba(27,31,36,0.15) !important;
+}
+
+/* ===== ACTION KEYS ===== */
+.action-key {
+    background: linear-gradient(145deg, #ff6b6b, #feca57) !important;
+    color: white !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 6px rgba(255,107,107,0.3) !important;
+    min-width: 32px !important;
+    min-height: 28px !important;
+    padding: 6px 10px !important;
+    font-size: 14px !important;
+}
+
+.action-key:hover {
+    background: linear-gradient(145deg, #ff5252, #ffb74d) !important;
+    box-shadow: 0 4px 12px rgba(255,82,82,0.4) !important;
+}
+
+/* ===== LANGUAGE KEYS ===== */
+.lang-key {
+    background: linear-gradient(145deg, #a8edea, #fed6e3) !important;
+    color: #333 !important;
+    border: 1px solid rgba(255,255,255,0.3) !important;
+    font-weight: 600 !important;
+    box-shadow: 0 2px 6px rgba(168,237,234,0.3) !important;
+}
+
+.lang-key:hover {
+    background: linear-gradient(145deg, #74b9ff, #0984e3) !important;
+    color: white !important;
+}
+
+/* ===== MODAL ===== */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1000;
+    background: linear-gradient(135deg, rgba(102,126,234,0.8), rgba(118,75,162,0.8));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    backdrop-filter: blur(8px);
+}
+
+.modal-box {
+    background: linear-gradient(145deg, #ffffff, #f8f9ff);
+    border-radius: 16px;
+    padding: 24px;
+    box-shadow: 0 16px 48px rgba(0,0,0,0.3);
+    max-width: 400px;
+    width: 90%;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.modal-title {
+    font-size: 20px;
+    font-weight: 600;
+    background: linear-gradient(45deg, #667eea, #764ba2);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.modal-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    font-size: 14px;
+    font-family: inherit;
+    margin-bottom: 20px;
+    transition: border-color 0.2s ease;
+}
+
+.modal-input:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 12px rgba(102,126,234,0.3);
+}
+
+.modal-buttons {
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+    .keyboard-main {
+        padding: 12px;
+        margin: 15px 8px;
+    }
+    
+    .key-btn {
+        min-width: 28px !important;
+        min-height: 24px !important;
+        padding: 4px 8px !important;
+        font-size: 12px !important;
+    }
+    
+    .space-key {
+        min-width: 220px !important;
+        height: 28px !important;
+    }
+    
+    .action-key {
+        min-width: 28px !important;
+        min-height: 24px !important;
+        padding: 4px 8px !important;
+        font-size: 12px !important;
+    }
+}
