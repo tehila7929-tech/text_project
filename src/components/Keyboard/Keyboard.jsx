@@ -7,18 +7,17 @@ import "./Keyboard.css";
 
 export default function Keyboard(props) {
 
-    const [whatLanguage, setWhatLanguage] = useState("english")
     const [style, setStyle] = useState({ color: "#000000", fontFamily: "Arial", fontSize: "16px" })
 
     useEffect(() => {
-        document.body.dir = whatLanguage === "english" ? "ltr" : "rtl";
-    }, [whatLanguage])
+        document.body.dir = props.whatLanguage === "english" ? "ltr" : "rtl";
+    }, [props.whatLanguage])
 
     return (
         <div className="keyboard-main">
-            <LanguageKeys setScreen={props.setScreen} setWhatLanguage={setWhatLanguage} setStyle={setStyle} whatLanguage={whatLanguage} style={style} lastScreens={props.lastScreens} screen={props.screen} />
-            <ActionKeys setScreen={props.setScreen} whatLanguage={whatLanguage} style={style} setStyle={setStyle} screen={props.screen} lastScreens={props.lastScreens} />
-            <DesignKeys setScreen={props.setScreen} whatLanguage={whatLanguage} setStyle={setStyle} screen={props.screen} lastScreens={props.lastScreens} />
+            <LanguageKeys setScreen={props.setScreen} setWhatLanguage={props.setWhatLanguage} setStyle={setStyle} whatLanguage={props.whatLanguage} style={style} lastScreens={props.lastScreens} screen={props.screen} />
+            <ActionKeys setScreen={props.setScreen} whatLanguage={props.whatLanguage} style={style} setStyle={setStyle} screen={props.screen} lastScreens={props.lastScreens} />
+            <DesignKeys setScreen={props.setScreen} whatLanguage={props.whatLanguage} setStyle={setStyle} screen={props.screen} lastScreens={props.lastScreens} />
         </div>
     )
 }
