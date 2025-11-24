@@ -9,7 +9,7 @@ let lastScreens = []
 
 function App() {
   const [screen, setScreen] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState(false)////לשאול את תהילה
+  const [userLoggedIn, setUserLoggedIn] = useState(false)
   return (
     <div className="main-workspace">
       <div className="document-item">
@@ -20,5 +20,5 @@ function App() {
     </div>
   )
 }
-//vh!
+
 export default App
