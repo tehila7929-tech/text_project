@@ -9,7 +9,7 @@ let lastScreens = []
 
 function App() {
   const [screen, setScreen] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState(false)
+  const [userLoggedIn, setUserLoggedIn] = useState(true)
   return (
     <div className="main-workspace">
       <div className="document-item">

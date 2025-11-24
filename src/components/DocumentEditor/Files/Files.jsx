@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Button from "../../Button"
-import Screen from "../Screen/Screen"
 
 if (!localStorage.getItem('currentUser')) {
     localStorage.setItem('currentUser', JSON.stringify([{ name: 'ab', screen: [] }]));
@@ -34,6 +33,7 @@ export default function Files(props) {
             });
             if (isNew) {
                 saveAs()
+                return
             }
             localStorage.setItem('currentUser', JSON.stringify(afterSave))
         }
@@ -53,9 +53,6 @@ export default function Files(props) {
     }
 
     function workingThisDocument() {
-        // props.setScreen(thisFile.screen);
-        // props.updateAllStatus()
-        // props.setWorkingThisDocument(true);
         props.setAsActive()
     }
 
