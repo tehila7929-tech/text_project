@@ -1,24 +1,24 @@
 import { useState } from 'react'
 import './App.css'
 import Keyboard from "./components/Keyboard/Keyboard"
-import DocumentEditor from "./components/DocumentEditor/DocumentEditor"
 import User from './components/User/User'
+import Button from './components/Button'
 let lastScreens = []
 
 
-import Document from "./components/DocumentEditor/Document/Document"
 
 function App() {
   const [screen, setScreen] = useState([]);
+  const [userLoggedIn, setUserLoggedIn] = useState(false)////לשאול את תהילה
   return (
     <div className="main-workspace">
       <div className="document-item">
-        <User screen={screen} setScreen={setScreen}></User>
-        {/* <Document screen={screen} setScreen={setScreen} /> */}
-        <Keyboard setScreen={setScreen} screen={screen} lastScreens={lastScreens} />
+        <User screen={screen} setScreen={setScreen} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}></User>
+        {userLoggedIn&&<Keyboard setScreen={setScreen} screen={screen} lastScreens={lastScreens} />&&
+        <Button clickAct={()=>{localStorage.setItem('currentUser', '');setUserLoggedIn(false) }}></Button>}
       </div>
     </div>
   )
 }
-//vh!!
+//vh!
 export default App
