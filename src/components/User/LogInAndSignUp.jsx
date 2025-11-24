@@ -5,8 +5,8 @@ export default function LogInAndSignUp() {
     return (<>
         <input
             type="mail"
-            onChange={()=>{email=}}
-            placeholder="
+            onChange={(event)=>{email=event.target.value}}
+            placeholder="כתובת מייל"
         />
     </>)
 }
