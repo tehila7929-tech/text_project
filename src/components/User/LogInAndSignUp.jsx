@@ -44,7 +44,7 @@ export default function LogInAndSignUp(props) {
 
             if (userExists) {
                 setErrorMessage(<div>A user with this email already exists.</div>);
-                return; // יוצאים מהפונקציה אם המשתמש קיים
+                return;
             }
 
             users.push({ email, password });

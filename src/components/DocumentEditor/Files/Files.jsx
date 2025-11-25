@@ -2,50 +2,87 @@ import { useState, useEffect } from "react";
 import Button from "../../Button"
 
 if (!localStorage.getItem('currentUser')) {
-    localStorage.setItem('currentUser', JSON.stringify([{ name: 'ab', screen: [] }]));
+    localStorage.setItem('currentUser', JSON.stringify([]));
 }
-
-let fileName
 
 export default function Files(props) {
     const [divIputs, setDivIputs] = useState(<></>)
-
+    const currentUser = localStorage.getItem('currentUser')
     function saveAs() {
-        fileName = prompt("הזן שם קובץ");
-        if (fileName) {
-            props.setThisFile({ name: fileName, screen: props.thisFile.screen });
-            save(fileName)
+        const newName = prompt(props.whatLanguage === "english" ? "Enter file name" : "הזן שם קובץ");
+        if (newName) {
+            const newFile = { name: newName, screen: props.screen };
+            let currentUserFiles = JSON.parse(localStorage.getItem(currentUser)) || [];
+            currentUserFiles.push(newFile);
+            localStorage.setItem(currentUser, JSON.stringify(currentUserFiles));
+            props.setThisFile(newFile);
         }
     }
 
-    function save(fileName = null) {
-        workingThisDocument()
-        let currentUserFiles = JSON.parse(localStorage.getItem('currentUser'));
-        let isNew = true
-        if (fileName == null) {
-            let afterSave = currentUserFiles.map(file => {
-                if (file.name === fileName) {
-                    file.screen = props.screen;
-                    isNew = false;
-                }
-                return file;
-            });
-            if (isNew) {
-                saveAs()
-                return
-            }
-            localStorage.setItem('currentUser', JSON.stringify(afterSave))
+    function save() {
+        props.setAsActive();
+        if (props.thisFile.name === "Unnamed" || !props.thisFile.name) {
+            saveAs();
+            return;
         }
-        else {
-            props.setThisFile({ name: fileName, screen: props.screen })
-            localStorage.setItem('currentUser', JSON.stringify([...currentUserFiles, { name: fileName, screen: props.screen }]))
+        let currentUserFiles = JSON.parse(localStorage.getItem(currentUser)) || [];
+        let found = false;
+        const updatedFiles = currentUserFiles.map(file => {
+            if (file.name === props.thisFile.name) {
+                found = true;
+                return { ...file, screen: props.screen };
+            }
+            return file;
+        });
+
+        if (found) {
+            localStorage.setItem(currentUser, JSON.stringify(updatedFiles));
+            props.setThisFile(prev => ({ ...prev, screen: props.screen }));
+            alert(props.whatLanguage === "english" ? "Saved!" : "נשמר!");
+        } else {
+            saveAs();
         }
     }
 
     function openFile() {
-        setDivIputs(JSON.parse(localStorage.getItem('currentUser')).map((element, index) => {
-            return <Button key={index} clickAct={() => { props.setThisFile(element); setDivIputs(<></>) }} target={element.name} />
-        }))
+        const rawData = localStorage.getItem(currentUser);
+        if (!rawData) {
+            const noFilesMessage = props.whatLanguage === "english" ? "No saved files found" : "לא נמצאו קבצים שמורים";
+            setDivIputs(
+                <div>
+                    <strong>{noFilesMessage}</strong>
+                    <Button clickAct={() => setDivIputs(<></>)} target={"❌"} />
+                </div>
+            );
+            return;
+        }
+
+        let files = JSON.parse(rawData);
+        const filesButtons = files.map((file, index) => {
+            return (
+                <Button key={index} target={file.name}
+                    clickAct={() => {
+                        props.setAsActive();
+                        props.setThisFile(file);
+                        setDivIputs(<></>);
+                    }}
+                />
+            )
+        });
+
+        const cancelTarget = props.whatLanguage === "english" ? "Cancel" : "ביטול";
+        const titleTarget = props.whatLanguage === "english" ? "Select a file:" : "בחר קובץ:";
+
+        setDivIputs(
+            <div>
+                <strong>{titleTarget}</strong>
+                <div>
+                    {filesButtons.length > 0 ? filesButtons : "ריק"}
+                </div>
+                <hr />
+                <Button clickAct={() => setDivIputs(<></>)} target={cancelTarget} />
+            </div>
+        )
     }
 
     function workingThisDocument() {
@@ -53,7 +90,7 @@ export default function Files(props) {
     }
 
     useEffect(() => {
-        if (props.workingThisDocument) {
+        if (props.workingThisDocument && props.thisFile.screen) {
             props.setScreen(props.thisFile.screen)
         }
     }, [props.workingThisDocument, props.thisFile])
@@ -71,7 +108,7 @@ export default function Files(props) {
 
     return (
         <>
-            <Button clickAct={() => { save(null) }} target={saveTarget} />
+            <Button clickAct={() => { save() }} target={saveTarget} />
             <Button clickAct={saveAs} target={saveASTarget} />
             <Button clickAct={workingThisDocument} target={workingTarget} />
             <Button clickAct={openFile} target={openingTarget} />
@@ -79,7 +116,5 @@ export default function Files(props) {
         </>
     )
 }
-
-
 
 
