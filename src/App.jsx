@@ -21,7 +21,8 @@ function App() {
           whatLanguage={whatLanguage} workingThisDocument={workingThisDocument} setWorkingThisDocument={setWorkingThisDocument}></User>
         {userLoggedIn && (
           <>
-            <Keyboard setScreen={setScreen} screen={screen} lastScreens={lastScreens} whatLanguage={whatLanguage} setWhatLanguage={setWhatLanguage} />
+            <Keyboard setScreen={setScreen} screen={screen} lastScreens={lastScreens} whatLanguage={whatLanguage} setWhatLanguage={setWhatLanguage}
+              workingThisDocument={workingThisDocument} setWorkingThisDocument={setWorkingThisDocument} />
             <Button clickAct={() => { localStorage.setItem('currentUser', ''); setUserLoggedIn(false) }} target={'log out'}></Button>
           </>
         )}

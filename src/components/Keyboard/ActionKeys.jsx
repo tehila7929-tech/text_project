@@ -19,13 +19,13 @@ export default function ActionKeys(props) {
     const actionKeys = [
         {
             clickAct: () => {
-                props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+                props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
                 props.setScreen(prevScreen => prevScreen.slice(0, -1))
             }, target: delTarget
         },
         {
             clickAct: () => {
-                props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+                props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
                 let lastSpace = lastSpaceIndex(props.screen)
                 if (lastSpace == -1)
                     props.setScreen([])
@@ -35,13 +35,13 @@ export default function ActionKeys(props) {
         },
         {
             clickAct: () => {
-                props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+                props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
                 props.setScreen([])
             }, target: delAllTarget
         },
         {
             clickAct: () => {
-                props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+                props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
                 styleNow = props.style;
                 props.setScreen(prevScreen => [...prevScreen, { ch: " ", style: styleNow }])
             }, target: spaceTarget, isSpace: true
@@ -50,7 +50,7 @@ export default function ActionKeys(props) {
         { clickAct: replaceInput, target: replaceTarget },
         {
             clickAct: () => {
-                props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+                props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
                 styleNow = props.style;
                 props.setScreen(prevScreen => [...prevScreen, { ch: " ", style: styleNow }, { ch: "/n", style: styleNow }])
             },
@@ -61,6 +61,7 @@ export default function ActionKeys(props) {
                 if (props.lastScreens.length > 0) {
                     props.setScreen(props.lastScreens[props.lastScreens.length - 1].screen);
                     props.setStyle(props.lastScreens[props.lastScreens.length - 1].style);
+                    props.setWorkingThisDocument(props.lastScreens[props.lastScreens.length - 1].workingThisDocument)
                     props.lastScreens.pop();
                 }
             },
@@ -89,7 +90,7 @@ export default function ActionKeys(props) {
             setinputBoxes(searchElements)
         }
     }
-    
+
     function replaceInput() {
         {
             let sourceChar
@@ -147,7 +148,7 @@ export default function ActionKeys(props) {
     return (
         <div className="key-section">
             {actionKeys.map((element, index) => (
-                element.isSpace ? 
+                element.isSpace ?
                     <button key={index} data-space="true" onClick={element.clickAct}>{element.target}</button>
                     : <Button key={index} clickAct={element.clickAct} target={element.target} />
             ))

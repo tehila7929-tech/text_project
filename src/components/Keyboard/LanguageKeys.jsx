@@ -76,7 +76,7 @@ export default function LanguageKeys(props) {
             <div>
                 {lettersArr.map((letter, index) => (
                     <Button key={index} target={letter} clickAct={() => {
-                        props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+                        props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
                         styleNow = props.style;
                         props.setScreen(prevScreen => [...prevScreen, { ch: letter, style: styleNow }])
                     }} />

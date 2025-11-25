@@ -47,7 +47,7 @@ export default function DesignKeys(props) {
     }
 
     function changeAllColor(color) {
-        props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+        props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
         props.setScreen(prevScreen => prevScreen.map(element => {
             return { ...element, style: { ...element.style, color: color } };
         }));
@@ -55,7 +55,7 @@ export default function DesignKeys(props) {
     }
 
     function changeAllFonts(font) {
-        props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+        props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
         props.setScreen(prevScreen => prevScreen.map(element => {
             return { ...element, style: { ...element.style, fontFamily: font } };
         }));
@@ -63,7 +63,7 @@ export default function DesignKeys(props) {
     }
 
     function changeAllFontSizes(fontSize) {
-        props.lastScreens.push({ style: props.style, screen: [...props.screen] });
+        props.lastScreens.push({ style: props.style, screen: [...props.screen], workingThisDocument: [...props.workingThisDocument] });
         props.setScreen(prevScreen => prevScreen.map(element => {
             return { ...element, style: { ...element.style, fontSize: fontSize } };
         }));
