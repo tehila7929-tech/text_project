@@ -11,7 +11,7 @@ export default function Document(props) {
             <Screen screen={props.screen} workingThisDocument={props.workingThisDocument} thisFile={thisFile}/>
             <Files screen={props.screen} setScreen={props.setScreen}
                 setAsActive={props.setAsActive} workingThisDocument={props.workingThisDocument}
-                thisFile={thisFile} setThisFile={setThisFile} />
+                thisFile={thisFile} setThisFile={setThisFile} whatLanguage={props.whatLanguage}/>
         </div>
     </>)
 }

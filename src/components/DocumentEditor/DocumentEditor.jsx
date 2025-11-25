@@ -64,6 +64,7 @@ export default function DocumentEditor(props) {
                     setScreen={props.setScreen}
                     workingThisDocument={workingThisDocument[index]}
                     setAsActive={() => setOnlyThisActive(index)}
+                    whatLanguage={props.whatLanguage}
                 />
             ))}
         </>

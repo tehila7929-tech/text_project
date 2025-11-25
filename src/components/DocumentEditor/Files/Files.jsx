@@ -68,12 +68,17 @@ export default function Files(props) {
         }
     }, [props.screen])
 
+    const saveTarget = props.whatLanguage ? "save" : "שמור"
+    const saveASTarget = props.whatLanguage ? "save as" : "שמור ב"
+    const workingTarget = props.whatLanguage ? "working on this file" : "עבוד על קובץ זה"
+    const openingTarget = props.whatLanguage ? "opening another file" : "פתיחת קובץ אחר"
+
     return (
         <>
-            <Button clickAct={() => { save(null) }} target="save" />
-            <Button clickAct={saveAs} target="save as" />
-            <Button clickAct={workingThisDocument} target="working on this file" />
-            <Button clickAct={openFile} target="opening another file" />
+            <Button clickAct={() => { save(null) }} target={saveTarget} />
+            <Button clickAct={saveAs} target={saveASTarget} />
+            <Button clickAct={workingThisDocument} target={workingTarget} />
+            <Button clickAct={openFile} target={openingTarget} />
             {divIputs}
         </>
     )
