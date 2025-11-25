@@ -9,12 +9,11 @@ let lastScreens = []
 
 function App() {
   const [screen, setScreen] = useState([]);
-  const [userLoggedIn, setUserLoggedIn] = useState(true)
+  const [userLoggedIn, setUserLoggedIn] = useState(false)
   const [whatLanguage, setWhatLanguage] = useState("english")
   return (
     <div className="main-workspace">
       <div className="document-item">
-        <User screen={screen} setScreen={setScreen} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}></User>
         {userLoggedIn && (
           <>
             <Keyboard setScreen={setScreen} screen={screen} lastScreens={lastScreens} whatLanguage={whatLanguage} setWhatLanguage={setWhatLanguage} />
