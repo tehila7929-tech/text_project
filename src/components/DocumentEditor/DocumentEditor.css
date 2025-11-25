@@ -198,7 +198,11 @@
 }
 
 .file-status {
-    display: none;
+    font-size: 11px;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 8px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
 }
 
 /* ===== FILES TOOLBAR ===== */
