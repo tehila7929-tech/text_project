@@ -25,7 +25,6 @@ export default function Files(props) {
         if (fileName == null) {
             let afterSave = currentUserFiles.map(file => {
                 if (file.name === fileName) {
-                    props.setThisFile({ name: fileName, screen: props.screen })
                     file.screen = props.screen;
                     isNew = false;
                 }
@@ -39,10 +38,7 @@ export default function Files(props) {
         }
         else {
             props.setThisFile({ name: fileName, screen: props.screen })
-            console.log([...currentUserFiles, { name: fileName, screen: props.screen }]);
             localStorage.setItem('currentUser', JSON.stringify([...currentUserFiles, { name: fileName, screen: props.screen }]))
-            console.log(JSON.parse(localStorage.getItem('currentUser')))
-
         }
     }
 
