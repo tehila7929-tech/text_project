@@ -13,20 +13,12 @@ function App() {
   const [whatLanguage, setWhatLanguage] = useState("english")
   const [workingThisDocument, setWorkingThisDocument] = useState([])
 
-  const setOnlyThisActive = (indexToActivate) => {
-    setWorkingThisDocument(prevDocs => {
-      return prevDocs.map((_, index) => {
-        return index === indexToActivate;
-      });
-    });
-  };
 
   return (
     <div className="main-workspace">
       <div className="document-item">
         <User screen={screen} setScreen={setScreen} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}
-          whatLanguage={whatLanguage} workingThisDocument={workingThisDocument} setWorkingThisDocument={setWorkingThisDocument}
-          setOnlyThisActive={setOnlyThisActive}></User>
+          whatLanguage={whatLanguage} workingThisDocument={workingThisDocument} setWorkingThisDocument={setWorkingThisDocument}></User>
         {userLoggedIn && (
           <>
             <Keyboard setScreen={setScreen} screen={screen} lastScreens={lastScreens} whatLanguage={whatLanguage} setWhatLanguage={setWhatLanguage} />

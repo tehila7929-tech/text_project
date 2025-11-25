@@ -27,6 +27,13 @@ export default function DocumentEditor(props) {
     };
 
 
+    const setOnlyThisActive = (indexToActivate) => {
+        props.setWorkingThisDocument(prevDocs => {
+            return prevDocs.map((_, index) => {
+                return index === indexToActivate;
+            });
+        });
+    };
 
     const openEditingTarget = props.whatLanguage === "english" ? "Open a new editing screen" : "פתח מסך עריכה חדש"
 
@@ -37,16 +44,16 @@ export default function DocumentEditor(props) {
                 <div className="word-title">Word Editor</div>
                 <Button clickAct={() => { newScreen() }} target={openEditingTarget} />
             </div>
-            
+
             <div className="screens-container">
                 {screenIds.map((id, index) => (
                     <Document
                         key={id}
-                        id={id} 
+                        id={id}
                         screen={props.screen}
                         setScreen={props.setScreen}
                         workingThisDocument={props.workingThisDocument[index]}
-                        setAsActive={() => props.setOnlyThisActive(index)}
+                        setAsActive={() => setOnlyThisActive(index)}
                         removeScreen={removeScreen}
                         whatLanguage={props.whatLanguage}
                     />
