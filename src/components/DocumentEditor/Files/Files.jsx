@@ -25,7 +25,7 @@ export default function Files(props) {
         if (fileName == null) {
             let afterSave = currentUserFiles.map(file => {
                 if (file.name === fileName) {
-                    props.setThisFile({ name: "no file", screen: props.screen })
+                    props.setThisFile({ name: fileName, screen: props.screen })
                     file.screen = props.screen;
                     isNew = false;
                 }
