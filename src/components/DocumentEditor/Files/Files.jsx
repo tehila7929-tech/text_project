@@ -1,19 +1,19 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Button from "../../Button"
 
 if (!localStorage.getItem('currentUser')) {
     localStorage.setItem('currentUser', JSON.stringify([{ name: 'ab', screen: [] }]));
 }
+
 let fileName
 
 export default function Files(props) {
-    const [thisFile, setThisFile] = useState({ name: "no file", screen: [] })
     const [divIputs, setDivIputs] = useState(<></>)
 
     function saveAs() {
         fileName = prompt("הזן שם קובץ");
         if (fileName) {
-            setThisFile({ name: fileName, screen: thisFile.screen });
+            props.setThisFile({ name: fileName, screen: props.thisFile.screen });
             save(fileName)
         }
     }
@@ -25,7 +25,7 @@ export default function Files(props) {
         if (fileName == null) {
             let afterSave = currentUserFiles.map(file => {
                 if (file.name === fileName) {
-                    setThisFile({ name: "no file", screen: props.screen })
+                    props.setThisFile({ name: "no file", screen: props.screen })
                     file.screen = props.screen;
                     isNew = false;
                 }
@@ -38,7 +38,7 @@ export default function Files(props) {
             localStorage.setItem('currentUser', JSON.stringify(afterSave))
         }
         else {
-            setThisFile({ name: fileName, screen: props.screen })
+            props.setThisFile({ name: fileName, screen: props.screen })
             console.log([...currentUserFiles, { name: fileName, screen: props.screen }]);
             localStorage.setItem('currentUser', JSON.stringify([...currentUserFiles, { name: fileName, screen: props.screen }]))
             console.log(JSON.parse(localStorage.getItem('currentUser')))
@@ -48,13 +48,25 @@ export default function Files(props) {
 
     function openFile() {
         setDivIputs(JSON.parse(localStorage.getItem('currentUser')).map((element, index) => {
-            return <Button key={index} clickAct={() => { setThisFile(element); setDivIputs(<></>) }} target={element.name} />
+            return <Button key={index} clickAct={() => { props.setThisFile(element); setDivIputs(<></>) }} target={element.name} />
         }))
     }
 
     function workingThisDocument() {
         props.setAsActive()
     }
+
+    useEffect(() => {
+        if (props.workingThisDocument) {
+            props.setScreen(props.thisFile.screen)
+        }
+    }, [props.workingThisDocument, props.thisFile])
+
+    useEffect(() => {
+        if (props.workingThisDocument) {
+            props.thisFile.screen = props.screen
+        }
+    }, [props.screen])
 
     return (
         <>

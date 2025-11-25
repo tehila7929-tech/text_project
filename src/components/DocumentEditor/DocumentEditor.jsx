@@ -56,25 +56,20 @@ export default function DocumentEditor(props) {
 
     return (
         <>
+            <Button clickAct={() => { newScreen() }} target="Open a new editing screen" />
             {screenIds.map((id, index) => (
                 < Document
                     key={id}
                     screen={props.screen}
                     setScreen={props.setScreen}
                     workingThisDocument={workingThisDocument[index]}
-                    // setWorkingThisDocument={(val) => updateStatus(index, val)}
-                    // updateAllStatus={updateAllStatus}
                     setAsActive={() => setOnlyThisActive(index)}
                 />
             ))}
-            <Button clickAct={() => { newScreen() }} target="Open a new editing screen" />
         </>
     )
 }
 
-
-
-
-
-//יהיה מערך שיעבור על כל המסכים וכל פעם שלוחצים על "לעבוד על מסך זה"
-//יצטרכו לבדוק אצך מי הוא כרגע ולעדכן את thisFile.screen שלו ל props.screen ורק אז לשנות.
+//פתיחה
+//מחיקת מסך
+//להוסיף למערך של אחרונים גם על איזה קובץ הוא עבד
