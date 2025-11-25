@@ -8,6 +8,7 @@ if (!localStorage.getItem('currentUser')) {
 export default function Files(props) {
     const [divIputs, setDivIputs] = useState(<></>)
     const currentUser = localStorage.getItem('currentUser')
+
     function saveAs() {
         const newName = prompt(props.whatLanguage === "english" ? "Enter file name" : "הזן שם קובץ");
         if (newName) {
@@ -20,7 +21,8 @@ export default function Files(props) {
     }
 
     function save() {
-        props.setAsActive();
+        const contentToSave = props.workingThisDocument ? props.screen : props.thisFile.screen;
+        workingThisDocument();
         if (props.thisFile.name === "Unnamed" || !props.thisFile.name) {
             saveAs();
             return;
@@ -30,14 +32,13 @@ export default function Files(props) {
         const updatedFiles = currentUserFiles.map(file => {
             if (file.name === props.thisFile.name) {
                 found = true;
-                return { ...file, screen: props.screen };
+                return { ...file, screen: contentToSave };
             }
             return file;
         });
-
         if (found) {
             localStorage.setItem(currentUser, JSON.stringify(updatedFiles));
-            props.setThisFile(prev => ({ ...prev, screen: props.screen }));
+            props.setThisFile(prev => ({ ...prev, screen: contentToSave }));
             alert(props.whatLanguage === "english" ? "Saved!" : "נשמר!");
         } else {
             saveAs();
@@ -49,30 +50,22 @@ export default function Files(props) {
         if (!rawData) {
             const noFilesMessage = props.whatLanguage === "english" ? "No saved files found" : "לא נמצאו קבצים שמורים";
             setDivIputs(
-                <div>
-                    <strong>{noFilesMessage}</strong>
-                    <Button clickAct={() => setDivIputs(<></>)} target={"❌"} />
-                </div>
+                <div> <strong>{noFilesMessage}</strong>
+                    <Button clickAct={() => setDivIputs(<></>)} target={"❌"} /> </div>
             );
             return;
         }
-
         let files = JSON.parse(rawData);
         const filesButtons = files.map((file, index) => {
             return (
-                <Button key={index} target={file.name}
-                    clickAct={() => {
-                        props.setAsActive();
-                        props.setThisFile(file);
-                        setDivIputs(<></>);
-                    }}
+                <Button key={index} target={file.name} clickAct={() => {
+                    props.setAsActive(); props.setThisFile(file); setDivIputs(<></>);
+                }}
                 />
             )
         });
-
         const cancelTarget = props.whatLanguage === "english" ? "Cancel" : "ביטול";
         const titleTarget = props.whatLanguage === "english" ? "Select a file:" : "בחר קובץ:";
-
         setDivIputs(
             <div>
                 <strong>{titleTarget}</strong>
