@@ -1,17 +1,19 @@
 import Button from "../Button";
 import { useState } from "react";
+import "./LogInAndSignUp.css";
+
 let email
 let password
 export default function LogInAndSignUp(props) {
-    const [errorMessage, setErrorMessage] = useState(<div></div>)
+    const [errorMessage, setErrorMessage] = useState("")
     function inputValidity() {
         if (!email || !password) {
-            setErrorMessage(<div>Please fill in all fields.</div>);
+            setErrorMessage("אנא מלא את כל השדות");
             return false;
         }
         const emailPattern = /^(?=.*@).+[^@]$/;
         if (!emailPattern.test(email)) {
-            setErrorMessage(<div>Invalid email format.</div>);
+            setErrorMessage("פורמט אימייל לא תקין");
             return false;
         }
         return true;
@@ -27,7 +29,7 @@ export default function LogInAndSignUp(props) {
                     return
                 }
             })
-            setErrorMessage(<div>The user does not exist yet or one of the details you entered is incorrect.</div>)
+            setErrorMessage("המשתמש לא קיים או שאחד הפרטים שהזנת שגוי")
         }
     }
 
@@ -43,7 +45,7 @@ export default function LogInAndSignUp(props) {
             });
 
             if (userExists) {
-                setErrorMessage(<div>A user with this email already exists.</div>);
+                setErrorMessage("משתמש עם אימייל זה כבר קיים");
                 return;
             }
 
@@ -53,20 +55,28 @@ export default function LogInAndSignUp(props) {
             props.setUserLoggedIn(true);
         }
     }
-    return (<>
-        <input
-            type="mail"
-            onChange={(event) => { email = event.target.value }}
-            placeholder="email"
-        />
-        <input
-            type="password"
-            onChange={(event) => { password = event.target.value }}
-            placeholder="password"
-        />
-        {errorMessage}
-        <Button clickAct={() => logIn()} target={"log in"}></Button>
-        <Button clickAct={() => signUp()} target={"sign up"}></Button>
-
-    </>)
+    return (
+        <div className="login-container">
+            <div className="login-box">
+                <h1 className="login-title">ברוכים הבאים</h1>
+                <input
+                    className="login-input"
+                    type="email"
+                    onChange={(event) => { email = event.target.value }}
+                    placeholder="אימייל"
+                />
+                <input
+                    className="login-input"
+                    type="password"
+                    onChange={(event) => { password = event.target.value }}
+                    placeholder="סיסמה"
+                />
+                {errorMessage && <div className="error-message">{errorMessage}</div>}
+                <div className="login-buttons">
+                    <button className="login-btn primary" onClick={() => logIn()}>התחבר</button>
+                    <button className="login-btn secondary" onClick={() => signUp()}>הירשם</button>
+                </div>
+            </div>
+        </div>
+    )
 }

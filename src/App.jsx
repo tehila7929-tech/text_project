@@ -23,7 +23,9 @@ function App() {
           <>
             <Keyboard setScreen={setScreen} screen={screen} lastScreens={lastScreens} whatLanguage={whatLanguage} setWhatLanguage={setWhatLanguage}
               workingThisDocument={workingThisDocument} setWorkingThisDocument={setWorkingThisDocument} />
-            <Button clickAct={() => { localStorage.setItem('currentUser', ''); setUserLoggedIn(false) }} target={'log out'}></Button>
+            <div className="logout-container">
+              <Button clickAct={() => { localStorage.setItem('currentUser', ''); setUserLoggedIn(false) }} target={'log out'}></Button>
+            </div>
           </>
         )}
       </div>
