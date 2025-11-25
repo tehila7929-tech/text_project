@@ -22,7 +22,7 @@ export default function LogInAndSignUp(props) {
             const users = JSON.parse(localStorage.getItem('users')) || []
             users.map((user) => {
                 if (user.email == email && user.password == password) {
-                    localStorage.setItem('currentUser', email)
+                    localStorage.setItem('currentUser', JSON.stringify(email))
                     props.setUserLoggedIn(true)
                     return
                 }
@@ -49,7 +49,7 @@ export default function LogInAndSignUp(props) {
 
             users.push({ email, password });
             localStorage.setItem('users', JSON.stringify(users));
-            localStorage.setItem('currentUser', email);
+            localStorage.setItem('currentUser', JSON.stringify(email))
             props.setUserLoggedIn(true);
         }
     }
