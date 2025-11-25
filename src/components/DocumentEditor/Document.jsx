@@ -1,7 +1,7 @@
-import Screen from "../Screen/Screen"
-import Files from "../Files/Files"
+import Screen from "./Screen/Screen"
+import Files from "./Files/Files"
 import { useState } from "react"
-import Button from "../../Button"
+import Button from "../Button"
 
 export default function Document(props) {
     const [thisFile, setThisFile] = useState({ name: "Unnamed", screen: [] })

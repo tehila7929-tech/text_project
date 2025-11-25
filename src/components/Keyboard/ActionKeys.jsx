@@ -14,7 +14,6 @@ export default function ActionKeys(props) {
     const makeReplaceTarget = props.whatLanguage === "english" ? "replace" : "החלף";
     const undo = props.whatLanguage === "english" ? "undo last action ↶" : "ביטול פעולה אחרונה ↶";
 
-
     let styleNow
 
     const actionKeys = [
@@ -90,6 +89,7 @@ export default function ActionKeys(props) {
             setinputBoxes(searchElements)
         }
     }
+    
     function replaceInput() {
         {
             let sourceChar
@@ -110,6 +110,7 @@ export default function ActionKeys(props) {
             setinputBoxes(searchElements)
         }
     }
+
     function replace(sourceChar, destinationChar) {
         const replacedText = props.screen.map(char => {
             if (char.ch === sourceChar) {
@@ -121,6 +122,7 @@ export default function ActionKeys(props) {
         props.setScreen(replacedText);
         setinputBoxes(<></>)
     }
+
     function search(searchTerm) {
         const highlightedScreen = props.screen.map(char => {
             if (char.ch === searchTerm) {
