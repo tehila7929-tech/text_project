@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
-import LanguageKeys from "./LanguageKeys/LanguageKeys"
-import DesignKeys from "./DesignKeys/DesignKeys";
-import ActionKeys from "./ActionKeys/ActionKeys";
+import LanguageKeys from "./LanguageKeys"
+import DesignKeys from "./DesignKeys";
+import ActionKeys from "./ActionKeys";
 import "./Keyboard.css";
 
 
