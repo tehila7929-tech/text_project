@@ -3,10 +3,11 @@
   max-width: 100%;
   margin: 0;
   padding: 0;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+  background-attachment: fixed;
 }
 
 /* ===== MAIN WORKSPACE ===== */
@@ -18,22 +19,20 @@
   margin: 0;
   width: 100%;
   min-height: 100vh;
+  position: relative;
 }
 
 /* ===== DOCUMENT WRAPPER ===== */
 .document-item {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-  transition: all 0.2s ease;
+  background: transparent;
+  transition: all 0.3s ease;
   font-family: 'Calibri', 'Segoe UI', sans-serif;
   flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
-}
-
-.document-item:hover {
-  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
+  position: relative;
 }
 
 /* ===== ADD DOCUMENT BUTTON ===== */
