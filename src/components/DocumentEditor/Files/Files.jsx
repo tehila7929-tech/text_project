@@ -68,10 +68,10 @@ export default function Files(props) {
         }
     }, [props.screen])
 
-    const saveTarget = props.whatLanguage ? "save" : "שמור"
-    const saveASTarget = props.whatLanguage ? "save as" : "שמור ב"
-    const workingTarget = props.whatLanguage ? "working on this file" : "עבוד על קובץ זה"
-    const openingTarget = props.whatLanguage ? "opening another file" : "פתיחת קובץ אחר"
+    const saveTarget = props.whatLanguage == "english" ? "save" : "שמור"
+    const saveASTarget = props.whatLanguage == "english" ? "save as" : "שמור ב"
+    const workingTarget = props.whatLanguage == "english" ? "working on this file" : "עבוד על קובץ זה"
+    const openingTarget = props.whatLanguage == "english" ? "opening another file" : "פתיחת קובץ אחר"
 
     return (
         <>
