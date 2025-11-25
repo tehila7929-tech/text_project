@@ -8,18 +8,19 @@ export default function Document(props) {
 
     return (
         <div className="document-window">
-            <div className="document-close-btn">
-                <Button
-                    clickAct={() => props.removeScreen(props.id)}
-                    target="✕"
-                />
-            </div>
-
-            <div className="document-title">
-                <span>{thisFile.name}</span>
-                <span className="file-status">
-                    {props.workingThisDocument ? "✏️ עריכה" : "📄 צפייה"}
-                </span>
+            <div className="document-header">
+                <div className="document-title">
+                    <span>{thisFile.name}</span>
+                    <span className="file-status">
+                        {props.workingThisDocument ? "✏️ עריכה" : "📄 צפייה"}
+                    </span>
+                </div>
+                <div className="document-close-btn">
+                    <Button
+                        clickAct={() => props.removeScreen(props.id)}
+                        target="✕"
+                    />
+                </div>
             </div>
 
             <Screen
