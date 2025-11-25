@@ -8,6 +8,7 @@ export default function DocumentEditor(props) {
     const [workingThisDocument, setWorkingThisDocument] = useState([])
 
     function newScreen() {
+        props.setScreen([])
         setScreenIds(prev => [...prev, prev.length]);
         setOnlyThisActive(screenIds.length)
         setWorkingThisDocument(prev => [...prev, true]);
