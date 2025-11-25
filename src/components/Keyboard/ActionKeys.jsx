@@ -84,13 +84,22 @@ export default function ActionKeys(props) {
                         return { ...char, style: { ...char.style, backgroundColor: 'white' } };
                     })
                     props.setScreen(withoutHighlight);
-                }
-                } target={"❌"} />
+                }} target={"❌"} />
             </div>
             setinputBoxes(searchElements)
         }
     }
 
+    function search(searchTerm) {
+        const highlightedScreen = props.screen.map(char => {
+            if (char.ch === searchTerm) {
+                return { ...char, style: { backgroundColor: 'lightblue' } };
+            }
+            return char;
+        });
+        props.setScreen(highlightedScreen);
+    }
+    
     function replaceInput() {
         {
             let sourceChar
@@ -124,16 +133,6 @@ export default function ActionKeys(props) {
         setinputBoxes(<></>)
     }
 
-    function search(searchTerm) {
-        const highlightedScreen = props.screen.map(char => {
-            if (char.ch === searchTerm) {
-                return { ...char, style: { backgroundColor: 'lightblue' } };
-            }
-            return char;
-        });
-        props.setScreen(highlightedScreen);
-
-    }
     const lastSpaceIndex = (prevScreen) => {
         let lastIndex = -1;
         for (let i = prevScreen.length - 1; i >= 0; i--) {

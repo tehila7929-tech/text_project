@@ -11,7 +11,6 @@ export default function DocumentEditor(props) {
         props.setScreen([])
         const newId = Date.now();
         setScreenIds(prev => [...prev, newId]);
-
         props.setWorkingThisDocument(prev => {
             const newStatus = prev.map(() => false);
             return [...newStatus, true];

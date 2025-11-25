@@ -88,6 +88,7 @@ export default function DesignKeys(props) {
         { clickAct: () => chooseDesignDiv("font", "all"), target: changeAllFontTarget },
         { clickAct: () => chooseDesignDiv("size", "all"), target: changeAllSizeTarget },
     ];
+    
     return (<div>
 
         {design.map((element, index) => (

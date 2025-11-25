@@ -8,18 +8,7 @@ if (!localStorage.getItem('currentUser')) {
 export default function Files(props) {
     const [divIputs, setDivIputs] = useState(<></>)
     const currentUser = localStorage.getItem('currentUser')
-
-    function saveAs() {
-        const newName = prompt(props.whatLanguage === "english" ? "Enter file name" : "הזן שם קובץ");
-        if (newName) {
-            const newFile = { name: newName, screen: props.screen };
-            let currentUserFiles = JSON.parse(localStorage.getItem(currentUser)) || [];
-            currentUserFiles.push(newFile);
-            localStorage.setItem(currentUser, JSON.stringify(currentUserFiles));
-            props.setThisFile(newFile);
-        }
-    }
-
+    
     function save() {
         const contentToSave = props.workingThisDocument ? props.screen : props.thisFile.screen;
         workingThisDocument();
@@ -44,6 +33,18 @@ export default function Files(props) {
             saveAs();
         }
     }
+
+    function saveAs() {
+        const newName = prompt(props.whatLanguage === "english" ? "Enter file name" : "הזן שם קובץ");
+        if (newName) {
+            const newFile = { name: newName, screen: props.screen };
+            let currentUserFiles = JSON.parse(localStorage.getItem(currentUser)) || [];
+            currentUserFiles.push(newFile);
+            localStorage.setItem(currentUser, JSON.stringify(currentUserFiles));
+            props.setThisFile(newFile);
+        }
+    }
+
 
     function openFile() {
         const rawData = localStorage.getItem(currentUser);
