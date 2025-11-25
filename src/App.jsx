@@ -14,6 +14,7 @@ function App() {
   return (
     <div className="main-workspace">
       <div className="document-item">
+        <User screen={screen} setScreen={setScreen} userLoggedIn={userLoggedIn} setUserLoggedIn={setUserLoggedIn}></User>
         {userLoggedIn && (
           <>
             <Keyboard setScreen={setScreen} screen={screen} lastScreens={lastScreens} whatLanguage={whatLanguage} setWhatLanguage={setWhatLanguage} />
