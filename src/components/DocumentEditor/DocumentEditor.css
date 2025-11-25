@@ -1,0 +1,147 @@
+/* ===== DOCUMENTS CONTAINER ===== */
+.documents-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 20px;
+}
+
+/* ===== WORD HEADER ===== */
+.word-header {
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+    margin-bottom: 20px;
+    border-radius: 8px;
+}
+
+.word-icon {
+    font-size: 32px;
+    background: linear-gradient(45deg, #ff6b6b, #feca57);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.word-title {
+    font-size: 24px;
+    font-weight: 600;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.3);
+}
+
+/* ===== SCREENS CONTAINER ===== */
+.screens-container {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex: 1;
+}
+
+/* ===== DOCUMENT WINDOW ===== */
+.document-window {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+    width: calc(33.333% - 14px);
+    min-width: 350px;
+    max-width: calc(33.333% - 14px);
+    min-height: 500px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+}
+
+.document-window:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.2);
+    border-color: #feca57;
+}
+
+/* ===== CLOSE BUTTON ===== */
+.document-close-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+}
+
+.document-close-btn button {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a52);
+    border: none;
+    border-radius: 50%;
+    padding: 0;
+    font-size: 12px;
+    color: white;
+    min-height: 24px;
+    width: 24px;
+    box-shadow: 0 2px 8px rgba(255,107,107,0.3);
+}
+
+.document-close-btn button:hover {
+    background: linear-gradient(45deg, #ee5a52, #dc2626);
+    transform: scale(1.1);
+}
+
+/* ===== DOCUMENT TITLE ===== */
+.document-title {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-weight: 600;
+    border-radius: 12px 12px 0 0;
+}
+
+.file-status {
+    font-size: 11px;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 8px;
+    border-radius: 12px;
+    backdrop-filter: blur(10px);
+}
+
+/* ===== FILES TOOLBAR ===== */
+.files-toolbar {
+    background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+    border-top: 1px solid #dee2e6;
+    padding: 10px 12px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    align-items: center;
+    margin-top: auto;
+    border-radius: 0 0 12px 12px;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+    .document-window {
+        width: calc(50% - 7.5px);
+        max-width: calc(50% - 7.5px);
+    }
+}
+
+@media (max-width: 768px) {
+    .document-window {
+        width: 100%;
+        max-width: 100%;
+        min-width: 280px;
+    }
+    
+    .documents-container {
+        gap: 10px;
+        padding: 5px;
+    }
+}

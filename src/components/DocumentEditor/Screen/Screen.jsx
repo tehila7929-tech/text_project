@@ -5,7 +5,6 @@ import './Screen.css'
 export default function Screen(props) {
     return (
         < >
-            <p>{props.thisFile.name}</p>
             {props.workingThisDocument ?
                 <div id='screen'>
                     {props.screen.map((element, index) => {

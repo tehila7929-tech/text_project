@@ -7,12 +7,19 @@ export default function Document(props) {
     const [thisFile, setThisFile] = useState({ name: "Unnamed", screen: [] })
 
     return (
-        <div style={{ border: "1px solid #ccc", margin: "10px", padding: "10px", position: "relative" }}>
-            <div style={{ position: "absolute", top: "5px", left: "5px", zIndex: 10 }}>
+        <div className="document-window">
+            <div className="document-close-btn">
                 <Button
                     clickAct={() => props.removeScreen(props.id)}
-                    target="X"
+                    target="✕"
                 />
+            </div>
+
+            <div className="document-title">
+                <span>{thisFile.name}</span>
+                <span className="file-status">
+                    {props.workingThisDocument ? "✏️ עריכה" : "📄 צפייה"}
+                </span>
             </div>
 
             <Screen
@@ -21,15 +28,17 @@ export default function Document(props) {
                 thisFile={thisFile}
             />
 
-            <Files
-                screen={props.screen}
-                setScreen={props.setScreen}
-                setAsActive={props.setAsActive}
-                workingThisDocument={props.workingThisDocument}
-                thisFile={thisFile}
-                setThisFile={setThisFile}
-                whatLanguage={props.whatLanguage}
-            />
+            <div className="files-toolbar">
+                <Files
+                    screen={props.screen}
+                    setScreen={props.setScreen}
+                    setAsActive={props.setAsActive}
+                    workingThisDocument={props.workingThisDocument}
+                    thisFile={thisFile}
+                    setThisFile={setThisFile}
+                    whatLanguage={props.whatLanguage}
+                />
+            </div>
         </div>
     )
 }

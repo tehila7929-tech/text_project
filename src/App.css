@@ -12,30 +12,28 @@
 /* ===== MAIN WORKSPACE ===== */
 .main-workspace {
   flex: 1;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 20px;
-  padding: 20px;
-  max-width: 1400px;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
   width: 100%;
+  min-height: 100vh;
 }
 
 /* ===== DOCUMENT WRAPPER ===== */
 .document-item {
-  background: #ffffff;
-  border-radius: 8px;
-  padding: 24px;
-  box-shadow: 0 2px 8px rgba(0,0,0,0.15), 0 0 0 1px rgba(0,0,0,0.05);
-  border: 1px solid #e0e0e0;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   transition: all 0.2s ease;
-  min-height: 400px;
-  font-family: 'Times New Roman', serif;
+  font-family: 'Calibri', 'Segoe UI', sans-serif;
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 .document-item:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2), 0 0 0 1px rgba(0,0,0,0.08);
+  background: linear-gradient(135deg, #5a67d8 0%, #6b46c1 100%);
 }
 
 /* ===== ADD DOCUMENT BUTTON ===== */
@@ -65,14 +63,49 @@
 }
 
 /* ===== RESPONSIVE ===== */
+@media (max-width: 1200px) {
+  .document-item {
+    flex: 0 0 calc(50% - 7.5px);
+    max-width: calc(50% - 7.5px);
+  }
+}
+
 @media (max-width: 768px) {
   .main-workspace {
-    grid-template-columns: 1fr;
+    flex-direction: column;
     padding: 10px;
-    gap: 15px;
+    gap: 10px;
   }
   
   .document-item {
-    min-height: 300px;
+    flex: 1 1 100%;
+    max-width: 100%;
+    min-width: 280px;
+    min-height: 400px;
   }
+}
+
+/* ===== WORD-LIKE TOOLBAR ===== */
+.word-toolbar {
+  background: #f8f9fa;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 8px 12px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  align-items: center;
+  font-size: 11px;
+}
+
+.word-toolbar button {
+  background: transparent;
+  border: 1px solid transparent;
+  padding: 4px 8px;
+  font-size: 11px;
+  border-radius: 2px;
+}
+
+.word-toolbar button:hover {
+  background: #e5e7eb;
+  border-color: #d1d5db;
 }

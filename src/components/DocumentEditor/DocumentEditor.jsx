@@ -1,6 +1,7 @@
 import Document from "./Document"
 import { useState } from "react"
 import Button from "../Button"
+import "./DocumentEditor.css"
 
 export default function DocumentEditor(props) {
 
@@ -30,20 +31,27 @@ export default function DocumentEditor(props) {
     const openEditingTarget = props.whatLanguage === "english" ? "Open a new editing screen" : "פתח מסך עריכה חדש"
 
     return (
-        <>
-            <Button clickAct={() => { newScreen() }} target={openEditingTarget} />
-            {screenIds.map((id, index) => (
-                <Document
-                    key={id}
-                    id={id} 
-                    screen={props.screen}
-                    setScreen={props.setScreen}
-                    workingThisDocument={props.workingThisDocument[index]}
-                    setAsActive={() => props.setOnlyThisActive(index)}
-                    removeScreen={removeScreen}
-                    whatLanguage={props.whatLanguage}
-                />
-            ))}
-        </>
+        <div className="documents-container">
+            <div className="word-header">
+                <div className="word-icon">📝</div>
+                <div className="word-title">Word Editor</div>
+                <Button clickAct={() => { newScreen() }} target={openEditingTarget} />
+            </div>
+            
+            <div className="screens-container">
+                {screenIds.map((id, index) => (
+                    <Document
+                        key={id}
+                        id={id} 
+                        screen={props.screen}
+                        setScreen={props.setScreen}
+                        workingThisDocument={props.workingThisDocument[index]}
+                        setAsActive={() => props.setOnlyThisActive(index)}
+                        removeScreen={removeScreen}
+                        whatLanguage={props.whatLanguage}
+                    />
+                ))}
+            </div>
+        </div>
     )
 }
